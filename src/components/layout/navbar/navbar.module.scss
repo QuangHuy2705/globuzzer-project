@@ -1,0 +1,78 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 80px;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.1);
+    .navbar-links {
+
+        .link {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            &:not(:first-child) {
+                margin-left: 40px;
+            }
+
+            a {
+                &:hover {
+                    color: #e67272;
+                }
+            }
+        }
+    }
+
+    .navbar-social-links {
+
+
+        .social-link {
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 40px;
+            }
+
+            .link-icon {
+                width: 15px;
+                height: 15px;
+
+                &--facebook {
+                    background-image: url('../../../commons/images/facebook.png');
+                    background-size: cover;
+
+                    &:hover {
+                        background-image: url('../../../commons/images/facebook--hover.svg');
+                    }
+                }
+                &--twitter {
+                    background-image: url('../../../commons/images/twitter.svg');
+                    background-size: cover;
+
+                    &:hover {
+                        background-image: url('../../../commons/images/twitter--hover.svg');
+                    }
+                }
+
+                &--instagram {
+                    background-image: url('../../../commons/images/instagram.svg');
+                    background-size: cover;
+
+                    &:hover {
+                        background-image: url('../../../commons/images/instagram--hover.svg');
+                    }
+                }
+
+                &--google {
+                    background-image: url('../../../commons/images/google.svg');
+                    background-size: cover;
+
+                    &:hover {
+                        background-image: url('../../../commons/images/google--hover.svg');
+                    }
+                }
+                
+            }
+        }
+    }
+}

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
+import loader from '../images/loader.gif'
 
 const Loader = props => (
-    <div>
-        
-    </div>
+    <img src={loader} alt='loader' />
 )
 
 export default Loader
