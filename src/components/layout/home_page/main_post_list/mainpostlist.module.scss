@@ -1,0 +1,113 @@
+.main-post-list {
+    .post {
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
+
+        &-image {
+            width: 100%;
+
+        }
+
+        &-text {
+            padding: 50px 40px 60px;
+
+            &-status {
+                margin-bottom: 18px;
+
+                * {
+                    font-size: 11px;
+                }
+
+                &-category {
+                    color: #e67272;
+                    padding-right: 10px; 
+                    border-right: 1px solid #080808;
+                    margin-right: 10px;
+                    text-transform: uppercase;
+                    display: inline-block;
+                }
+    
+                &-likes {
+                    margin-right: 10px;
+                    display: inline-block;
+                }
+    
+                &-comments {
+                    margin-right: 10px;
+                    display: inline-block;
+                }
+            }
+    
+            &-title {
+                font-size: 30px;
+                font-family: Amiri, serif;
+            }
+    
+            &-discription {
+                font-size: 15px;
+                margin-top: 30px;
+                line-height: 26px;
+            }
+    
+            &-date {
+                font-style: italic;
+                color: #9C9C9C;
+                margin-top: 8px;
+            }
+        }
+
+
+
+        .btn {
+            padding: 14px 44px;
+            text-transform: uppercase;
+            color: #e67272;
+            transition: all .2s;
+            border: 1px solid #e67272;
+            display: inline-block;
+            margin-top: 30px;
+
+            &:hover {
+                background-color: #e67272;
+                color: #080808;
+            }
+        }
+    }
+
+    .hero-post {
+        margin-bottom: 40px;
+    }
+
+    .sub-posts {
+        margin-bottom: 40px;
+
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 30px 30px; 
+        }
+
+        @media (max-width: 767px) {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 30px 30px; 
+        }
+
+    }
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+    background-size: cover;
+    display: inline-block;
+
+    &--comment {
+        background-image: url('../../../../commons/images/comment.svg');
+    }
+
+    &--heart {
+        background-image: url('../../../../commons/images/heart.svg')
+    }
+}

@@ -12,10 +12,70 @@
 
     .categories {
         background-color: #fff;
-        padding: 60px 80px;
+        display: flex;
+        text-align: center;
+
+        @media (min-width: 768px) {
+            padding: 60px 80px;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 767px) {
+            padding: 40px 60px;
+            flex-direction: column;
+            align-items: center;
+
+            .categories-item {
+                margin: 10px 0;
+            }
+        }
 
         .categories-item {
-            
+
+            position: relative;
+            max-width: 210px;
+            min-width: 0;
+
+            @media (min-width: 768px) {
+                margin: 0 10px;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            a {
+                padding: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.685);
+                width: 100%;
+                text-transform: uppercase;
+                font-size: 11px;
+
+                &:hover {
+                    background-color: rgb(255, 255, 255);
+                }
+            }
         }
+    }
+
+    .main-content {
+        @media (min-width: 768px) {
+            padding: 60px 80px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        @media (max-width: 767px) {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+
     }
 }   
