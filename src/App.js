@@ -13,18 +13,23 @@ const Homepage = Loadable({
   loading: LoadingComponent
 })
 
+const CreateForm = Loadable({
+  loader: () => import('./components/layout/create_post_page/CreateForm'),
+  loading: LoadingComponent
+})
+
 function App() {
   return (
     <div className="App">
       <BreakpointProvider>
         <Provider store={store}>
+        
           <Router>
-            <Navbar />
-
-            <Switch>
-              <Route exact path='/' component={Homepage} />
-            
-            </Switch>
+              <Navbar />
+              <Switch>
+                <Route exact path='/' component={Homepage} />
+                <Route exact path='/posts/create' component={CreateForm} />
+              </Switch>
           </Router>
         </Provider>
       </BreakpointProvider>

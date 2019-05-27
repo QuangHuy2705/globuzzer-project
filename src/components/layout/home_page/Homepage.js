@@ -10,8 +10,13 @@ import categoryhealth from '../../../commons/images/category-health.jpg'
 import {Link} from 'react-router-dom'
 import Sidebar from './side_bar/Sidebar'
 import MainPostList from './main_post_list/MainPostList'
+import Loading from '../../../commons/loading_component/LoadingComponent'
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
  
 class Homepage extends Component {
+
+    
     render() {
         return (
             <div className={styles.homepage}>
@@ -45,8 +50,13 @@ class Homepage extends Component {
                 </div>
 
                 <div className={styles[`main-content`]}>
-                    <MainPostList />
-                    <Sidebar />
+                    {(!this.props.authors || !this.props.posts) 
+                        ? <Loading /> 
+                        : ( <React.Fragment>
+                                <MainPostList posts={this.props.posts} />
+                                <Sidebar authors={this.props.authors} posts={this.props.posts} />
+                            </React.Fragment>   
+                    )} 
                 </div>
             </div>
         )
@@ -54,8 +64,19 @@ class Homepage extends Component {
     
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    return {
+        posts: state.firestore.ordered.posts,
+        authors: state.firestore.ordered.authors
+    }
+}
 
-}) 
 
-export default connect(mapStateToProps, null)(Homepage)
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'posts'},
+        {collection: 'authors'}
+    ])
+)(Homepage)

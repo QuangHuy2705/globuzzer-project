@@ -2,18 +2,56 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as styles from './navbar.module.scss'
 import { Link } from 'react-router-dom'
+import Breakpoint from 'react-socks'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class Navbar extends Component { 
+    constructor(props) {
+        super(props)
+        this.state = {
+            isNavbarShown: false
+        }
+    }
+
+    toggleNavbar = e => {
+        this.setState({isNavbarShown: !this.state.isNavbarShown})
+    }
+
     render() {
+        let navbarMenu =        
+            (<ul key={1} className={styles[`navbar-links--mobile`]}>
+                <li className={styles.link}><Link to='/'>Home</Link></li>
+                <li className={styles.link}><Link to='/'>Pages</Link></li>
+                <li className={styles.link}><Link to='/'>Travel</Link></li>
+                <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
+                <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
+            </ul>)
+
         return (
             <div className={styles.navbar}>
-                <ul className={styles[`navbar-links`]}>
-                    <li className={styles.link}><a href='/'>Home</a></li>
-                    <li className={styles.link}><a href='/'>Pages</a></li>
-                    <li className={styles.link}><a href='/'>Travel</a></li>
-                    <li className={styles.link}><a href='/'>Lifestyle</a></li>
-                    <li className={styles.link}><a href='/'>Featured</a></li>
-                </ul>
+                <Breakpoint medium up>
+                    <ul className={styles[`navbar-links`]}>
+                        <li className={styles.link}><Link to='/'>Home</Link></li>
+                        <li className={styles.link}><Link to='/'>Pages</Link></li>
+                        <li className={styles.link}><Link to='/'>Travel</Link></li>
+                        <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
+                        <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
+                    </ul>
+                </Breakpoint>
+
+                <Breakpoint small down>
+                    <div onClick={e => this.toggleNavbar(e)} className={`${styles[`icon`]} ${styles[`icon--menu`]}`}></div>
+                </Breakpoint>
+                <CSSTransitionGroup
+                    transitionName='slide' 
+                    transitionAppear={true}
+                    transitionAppearTimeout={2000}
+                    transitionEnterTimeout={2000} 
+                    transitionLeaveTimeout={2000}
+                >
+                    {this.state.isNavbarShown && navbarMenu}
+                </CSSTransitionGroup>
+
                 <ul className={styles[`navbar-social-links`]}>
                     <li className={`${styles[`social-link`]}`}>
                         <a href='/'>
