@@ -26,7 +26,9 @@ class Homepage extends Component {
                     <img src={mainlogo} alt='main-logo'/>
                 </div>
 
-                <div className={styles.slideshow}></div>
+                <div className={styles[`slideshow`]}>
+                    <SlideShow posts={slideshowPosts} />
+                </div>
 
                 <div className={styles.categories}>
                     <div className={styles[`categories-item`]}>
@@ -49,10 +51,6 @@ class Homepage extends Component {
                         <img src={categoryhealth} alt=''/>
                         <Link to='/'>health</Link>
                     </div>
-                </div>
-
-                <div className={styles[`slideshow`]}>
-                    <SlideShow posts={slideshowPosts} />
                 </div>
 
                 <div className={styles[`main-content`]}>
