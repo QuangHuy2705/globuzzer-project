@@ -15,7 +15,12 @@ class Navbar extends Component {
     }
 
     toggleNavbar = e => {
+        
         this.setState({isNavbarShown: !this.state.isNavbarShown})
+    }
+
+    onCloseNavbar = e => {
+        this.setState({isNavbarShown: false})
     }
 
     render() {
@@ -50,11 +55,11 @@ class Navbar extends Component {
                     timeout={200}
                 >
                     <ul className={styles[`navbar-links--mobile`]}>
-                        <li className={styles.link}><Link to='/'>Home</Link></li>
-                        <li className={styles.link}><Link to='/'>Pages</Link></li>
-                        <li className={styles.link}><Link to='/'>Travel</Link></li>
-                        <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
-                        <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
+                        <li className={styles.link}><Link onClick={e => this.toggleNavbar(e)} to='/'>Home</Link></li>
+                        <li className={styles.link}><Link onClick={e => this.toggleNavbar(e)} to='/'>Pages</Link></li>
+                        <li className={styles.link}><Link onClick={e => this.toggleNavbar(e)} to='/'>Travel</Link></li>
+                        <li className={styles.link}><Link onClick={e => this.toggleNavbar(e)} to='/'>Lifestyle</Link></li>
+                        <li className={styles.link}><Link onClick={e => this.toggleNavbar(e)} to='/posts/create'>New Post</Link></li>
                     </ul>
                 </CSSTransition>
 
