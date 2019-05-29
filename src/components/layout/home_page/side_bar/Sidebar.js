@@ -1,9 +1,19 @@
-import React, {Component} from 'react'
+import React from 'react'
 import * as styles from './sidebar.module.scss'
 import image_placeholder from '../../../../commons/images/image_placeholder.png'
+import insta1 from '../../../../commons/images/insta-1.jpg'
+import insta2 from '../../../../commons/images/insta-2.jpg'
+import insta3 from '../../../../commons/images/insta-3.jpg'
+import insta4 from '../../../../commons/images/insta-4.jpg'
+import insta5 from '../../../../commons/images/insta-5.jpg'
+import insta6 from '../../../../commons/images/insta-6.jpg'
+import insta7 from '../../../../commons/images/insta-7.jpg'
+import insta8 from '../../../../commons/images/insta-8.jpg'
 
 const Sidebar = ({posts, authors}) => {
     const popularPosts = posts.filter((post, idx) => idx < 3)
+
+    const instaImages = [insta1, insta2, insta3, insta4, insta5, insta6, insta7, insta8]
 
     return (
         <div className={styles.sidebar}>
@@ -52,39 +62,16 @@ const Sidebar = ({posts, authors}) => {
                 </div>
 
                 <div className={styles[`insta-images`]}>
-                    <a href='/' className={styles[`image-wrapper`]}>
-                        <div className={styles[`image-hover`]}>
-                            <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
-                        </div>
-                        <img className={styles[`insta-image`]} src='http://www.perfektart.com/Online/Ritsu/images/insta5.jpg' alt='a'></img>
-                    </a>
-
-                    <a href='/' className={styles[`image-wrapper`]}>
-                        <div className={styles[`image-hover`]}>
-                            <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
-                        </div>
-                        <img className={styles[`insta-image`]} src='http://www.perfektart.com/Online/Ritsu/images/insta5.jpg' alt='a'></img>
-                    </a>
-
-                    <a href='/' className={styles[`image-wrapper`]}>
-                        <div className={styles[`image-hover`]}>
-                            <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
-                        </div>
-                        <img className={styles[`insta-image`]} src='http://www.perfektart.com/Online/Ritsu/images/insta5.jpg' alt='a'></img>
-                    </a>
-
-                    <a href='/' className={styles[`image-wrapper`]}>
-                        <div className={styles[`image-hover`]}>
-                            <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
-                        </div>
-                        <img className={styles[`insta-image`]} src='http://www.perfektart.com/Online/Ritsu/images/insta5.jpg' alt='a'></img>
-                    </a>
-                    <a href='/' className={styles[`image-wrapper`]}>
-                        <div className={styles[`image-hover`]}>
-                            <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
-                        </div>
-                        <img className={styles[`insta-image`]} src='http://www.perfektart.com/Online/Ritsu/images/insta5.jpg' alt='a'></img>
-                    </a>
+                    {instaImages.map((image, idx) => {
+                        return (
+                            <a key={idx} href='/' className={styles[`image-wrapper`]}>
+                                <div className={styles[`image-hover`]}>
+                                    <div className={`${styles[`icon`]} ${styles[`icon--search`]}`} />
+                                </div>
+                                <img className={styles[`insta-image`]} src={image} alt={`insta${idx}`}></img>
+                            </a>
+                        )
+                    })}
                 </div>
                 
             </div>

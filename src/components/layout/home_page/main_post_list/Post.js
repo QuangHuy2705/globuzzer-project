@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import * as styles from './mainpostlist.module.scss'
 import image_placeholder from '../../../../commons/images/image_placeholder.png'
 
 const Post = ({hero, post}) => (
     <div className={styles[`post`]}>
-        <img src={post.image_url ? post.image_url : image_placeholder} className={styles[`post-image`]} alt='whatever'/>
+        <img src={post.image_url ? post.image_url : image_placeholder} className={styles[`post-image`]} alt='post_image'/>
         <div className={styles[`post-text`]}>
             <div className={styles[`post-text-status`]}>
                 <a className={styles[`post-text-status-category`]} href='/' >{post.category ? post.category : 'Unknown'}</a>

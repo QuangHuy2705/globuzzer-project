@@ -16,6 +16,7 @@
     }
 
     .navbar-links {
+        padding: 5px 0 0 0;
 
         .link {
             display: inline-block;
@@ -29,6 +30,12 @@
             a {
                 &:hover {
                     color: #e67272;
+                }
+            }
+
+            &--active {
+                a {
+                 color: #e67272;
                 }
             }
         }
@@ -133,47 +140,31 @@
 
 //animation
 .slide-appear {
-    opacity: 0.01;
-  }
-  
-.slide-appear.slide-appear-active {
-    opacity: 1;
-    transition: all 2s ease-in;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .8s cubic-bezier(.05,.52,.36,.98);
+
+    &-active {
+        max-height: 100%;
+    }
 }
 
-// .nav-enter {
-//     opacity: 0.01;
-//   }
-  
-//   .nav-enter.nav-enter-active {
-//     opacity: 1;
-//     transition: opacity 300ms ease-in;
-//   }
-  
-//   .nav-leave {
-//     opacity: 1;
-//   }
-  
-//   .nav-leave.nav-leave-active {
-//     opacity: 0.01;
-//     transition: opacity 300ms ease-in;
-//   }
-
-
 .slide-enter {
-    transform: translateY(-100%);
-    transition: all 2000s;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .8s cubic-bezier(.05,.52,.36,.98);
 
-    &.nav-enter-active {
-      transform: translateY(0%);
+    &-active {
+        max-height: 100%;
     }
-  }
+}
   
-.slide-leave {
-    transform: translateY(0%);
-    transition: all 2000s;
+.slide-exit {
+    max-height: 100%;
+    overflow: hidden;
+    transition: all .8s cubic-bezier(.05,.52,.36,.98);
 
-    &.slide-leave-active {
-        transform: translateY(-100%);
+    &-active {
+        max-height: 0;
     }
 }

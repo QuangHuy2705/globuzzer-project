@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import * as styles from './navbar.module.scss'
 import { Link } from 'react-router-dom'
 import Breakpoint from 'react-socks'
-import { CSSTransitionGroup } from 'react-transition-group'
+import { withRouter } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group'
 
 class Navbar extends Component { 
     constructor(props) {
@@ -18,39 +19,44 @@ class Navbar extends Component {
     }
 
     render() {
-        let navbarMenu =        
-            (<ul key={1} className={styles[`navbar-links--mobile`]}>
-                <li className={styles.link}><Link to='/'>Home</Link></li>
-                <li className={styles.link}><Link to='/'>Pages</Link></li>
-                <li className={styles.link}><Link to='/'>Travel</Link></li>
-                <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
-                <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
-            </ul>)
-
+        const {history: {location: { pathname }}} = this.props
         return (
             <div className={styles.navbar}>
                 <Breakpoint medium up>
                     <ul className={styles[`navbar-links`]}>
-                        <li className={styles.link}><Link to='/'>Home</Link></li>
+                        <li className={pathname === '/' ? `${styles.link} ${styles[`link--active`]}` : `${styles[`link`]}`}><Link to='/'>Home</Link></li>
                         <li className={styles.link}><Link to='/'>Pages</Link></li>
                         <li className={styles.link}><Link to='/'>Travel</Link></li>
                         <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
-                        <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
+                        <li className={pathname === '/posts/create' ? `${styles.link} ${styles[`link--active`]}` : `${styles[`link`]}`}><Link to='/posts/create'>New Post</Link></li>
                     </ul>
                 </Breakpoint>
 
                 <Breakpoint small down>
                     <div onClick={e => this.toggleNavbar(e)} className={`${styles[`icon`]} ${styles[`icon--menu`]}`}></div>
                 </Breakpoint>
-                <CSSTransitionGroup
-                    transitionName='slide' 
-                    transitionAppear={true}
-                    transitionAppearTimeout={2000}
-                    transitionEnterTimeout={2000} 
-                    transitionLeaveTimeout={2000}
+                <CSSTransition
+                    in={this.state.isNavbarShown}
+                    unmountOnExit={true}
+                    classNames={{
+                        appear: styles[`slide-appear`],
+                        appearActive: styles[`slide-appear-active`],
+                        enter: styles[`slide-enter`],
+                        enterActive: styles[`slide-enter-active`],
+                        enterDone: styles[`slide-enter-done`],
+                        exit: styles[`slide-exit`],
+                        exitActive: styles[`slide-exit-active`]
+                    }}
+                    timeout={200}
                 >
-                    {this.state.isNavbarShown && navbarMenu}
-                </CSSTransitionGroup>
+                    <ul className={styles[`navbar-links--mobile`]}>
+                        <li className={styles.link}><Link to='/'>Home</Link></li>
+                        <li className={styles.link}><Link to='/'>Pages</Link></li>
+                        <li className={styles.link}><Link to='/'>Travel</Link></li>
+                        <li className={styles.link}><Link to='/'>Lifestyle</Link></li>
+                        <li className={styles.link}><Link to='/posts/create'>New Post</Link></li>
+                    </ul>
+                </CSSTransition>
 
                 <ul className={styles[`navbar-social-links`]}>
                     <li className={`${styles[`social-link`]}`}>
@@ -86,4 +92,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Navbar)
+export default withRouter(connect(mapStateToProps, null)(Navbar))

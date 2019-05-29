@@ -98,7 +98,17 @@
                     opacity: .9;
                     height: auto;
                     max-height: 80px;
-                    max-width: 100%;
+                    @media (max-width: 1600px) {
+                        max-width: 100px;
+                    }
+
+                    @media (max-width: 790px) {
+                        max-width: 70px;
+                    }
+
+                    @media (max-width: 768px) {
+                        max-width: 100px;
+                    }
                 }
     
                 .post-text {
@@ -128,7 +138,7 @@
             .image-wrapper {
                 min-width: 0;
                 position: relative;
-                max-width: 82px;
+                max-width: 100%;
 
                 .image-hover {
                     opacity: 0;
@@ -151,6 +161,7 @@
 
                 .insta-image {
                     width: 100%;
+                    vertical-align: middle;
                 }
 
                 &:hover {

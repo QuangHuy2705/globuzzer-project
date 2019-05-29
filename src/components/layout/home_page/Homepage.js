@@ -10,6 +10,7 @@ import categoryhealth from '../../../commons/images/category-health.jpg'
 import {Link} from 'react-router-dom'
 import Sidebar from './side_bar/Sidebar'
 import MainPostList from './main_post_list/MainPostList'
+import SlideShow from './post_slide_show/SlideShow'
 import Loading from '../../../commons/loading_component/LoadingComponent'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
@@ -18,7 +19,8 @@ class Homepage extends Component {
 
     
     render() {
-        return (
+        const slideshowPosts = this.props.posts ? this.props.posts.filter((post, idx) => post.slideShow ) : []
+        return (!this.props.posts || !this.props.authors || this.props.posts.length === 0 || this.props.authors.length === 0) ? <Loading /> : ( 
             <div className={styles.homepage}>
                 <div className={styles[`main-logo`]}>
                     <img src={mainlogo} alt='main-logo'/>
@@ -47,6 +49,10 @@ class Homepage extends Component {
                         <img src={categoryhealth} alt=''/>
                         <Link to='/'>health</Link>
                     </div>
+                </div>
+
+                <div className={styles[`slideshow`]}>
+                    <SlideShow posts={slideshowPosts} />
                 </div>
 
                 <div className={styles[`main-content`]}>

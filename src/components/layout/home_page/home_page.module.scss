@@ -2,8 +2,20 @@
 
     .main-logo {
         padding: 80px 0;
-
         text-align: center;
+
+        @media (max-width: 1200px) {
+            padding: 80px 0 75px;
+        }
+
+        @media (max-width: 960px) {
+            padding: 70px 0 65px;
+        }
+
+        @media (max-width: 768px) {
+            padding: 50px 0 45px;
+            margin-top: 60px;
+        }
     }
 
     .slideshow {
@@ -64,13 +76,13 @@
     }
 
     .main-content {
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             padding: 60px 80px;
             display: grid;
             grid-template-columns: 2fr 1fr;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
             padding: 40px;
             display: grid;
             grid-template-columns: 1fr;

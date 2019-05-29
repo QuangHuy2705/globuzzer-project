@@ -29,6 +29,7 @@ class CreateForm extends Component {
     }
 
     render() {
+        console.log(this.props.history)
         return (
             <div className={styles[`create-form`]} >
                 <h3 className={styles[`form-title`]}>
@@ -51,7 +52,7 @@ class CreateForm extends Component {
                     </div>
                     
                     <div className={styles[`form-item`]}>
-                        <textarea placeholder='Content' id='content' name='content' value={this.state.content} onChange={e => this.handleChange(e)} type='text'  className={styles[`form-input`]} />
+                        <textarea rows={5} placeholder='Content' id='content' name='content' value={this.state.content} onChange={e => this.handleChange(e)} type='text'  className={styles[`form-input`]} />
                     </div>
                     <button className={styles[`form-button`]} type='submit' >Create</button>
                 </form>

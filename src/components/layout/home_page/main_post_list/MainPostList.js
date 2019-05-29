@@ -1,7 +1,6 @@
 import React from 'react'
 import * as styles from './mainpostlist.module.scss'
 import Post from './Post'
-import Loading from '../../../../commons/loading_component/LoadingComponent'
 
 const MainPostList = ({posts}) => {
 

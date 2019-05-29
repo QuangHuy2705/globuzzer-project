@@ -2,6 +2,7 @@
     min-width: 0;
 
     .post {
+        min-width: 0;
         background-color: #fff;
         text-align: center;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
@@ -41,7 +42,7 @@
             }
     
             &-title {
-                font-size: 30px;
+                font-size: 24px;
                 font-family: Amiri, serif;
             }
     
